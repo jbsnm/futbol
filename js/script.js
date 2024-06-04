@@ -16,6 +16,7 @@ const agregarJugador = async () => {
         const nombre = prompt("Ingrese el nombre del jugador:");
         const edad = parseInt(prompt("Ingrese la edad del jugador:"));
         const posicion = prompt("Ingrese la posición del jugador:");
+        const titularidad = prompt("Ingrese si el jugador está como titular o suplente");
 
         // Obtener los jugadores del localStorage
         let jugadores = obtenerJugadoresLocalStorage();
@@ -27,7 +28,7 @@ const agregarJugador = async () => {
         }
 
         // Agregar el nuevo jugador al array de jugadores
-        jugadores.push({ nombre, edad, posicion });
+        jugadores.push({ nombre, edad, posicion, titularidad });
 
         // Guardar los jugadores actualizados en el localStorage
         guardarJugadoresLocalStorage(jugadores);
@@ -37,6 +38,8 @@ const agregarJugador = async () => {
 
         // Mostrar un mensaje de éxito
         alert('Jugador agregado correctamente.');
+
+        await listarJugadores();
     } catch (error) {
         console.error('Error:', error.message);
     }
@@ -45,12 +48,77 @@ const agregarJugador = async () => {
 
 // Función asíncrona para listar todos los jugadores del equipo
 const listarJugadores = async () => {
-    // Implementación para listar todos los jugadores
+    try {
+        //obtener los jugadores del localStorage
+        let jugadores = obtenerJugadoresLocalStorage();
+        //condicion para mostrar la lista si es que está vacía
+        if (jugadores.length === 0 ) {
+            console.log('No hay jugadores en la lista');
+            return;
+        }
+
+        const titularesElement = document.getElementById('titulares');
+        const suplentesElement = document.getElementById('suplentes');
+        
+        titularesElement.innerHTML = '';
+        suplentesElement.innerHTML = '';
+      //recorre la lista de jugadores, devuelve un listado con sus caracteristicas
+        jugadores.forEach(jugador => {
+            const jugadorItem = document.createElement('li');
+            jugadorItem.textContent = `${jugador.nombre}, ${jugador.edad} años, ${jugador.posicion}.`;
+            
+            if (jugador.titularidad === 'titular'){
+                titularesElement.appendChild(jugadorItem);
+            } else if (jugador.titularidad === 'suplente') {
+                suplentesElement.appendChild(jugadorItem);
+            }
+        });
+
+        console.log('Lista de jugadores actualizada');
+        
+        } catch (error) {
+            console.error('Error:', error.message);
+        }
 };
+document.addEventListener('DOMContentLoaded', listarJugadores);
+
+
+        
 
 // Función asíncrona para asignar una nueva posición a un jugador
-const asignarPosicion = async (nombreJugador, nuevaPosicion) => {
+const asignarPosicion = async () => {
     // Implementación para asignar una nueva posición a un jugador
+    try {
+    // SOlicitar al usuario los datos que quiere modificar
+    const nombreJugador = prompt("Ingrese el nombre del jugador para reasignarle la posición:");
+    const nuevaPosicion = prompt("Ingrese la nueva posición del jugador:");
+
+    //obtener los jugadores del localStorage
+
+    let jugadores = obtenerJugadoresLocalStorage();
+
+    //verificar si el jugador existe en el localStorage y sino, tirar un error
+
+    const jugador = jugadores.find(jugador => jugador.nombre === nombreJugador);
+    if (!jugador) {
+        throw new Error ('Jugador no encontrado');
+    }
+
+    //asignar una nueva posición
+
+    jugador.posicion = nuevaPosicion;
+
+    guardarJugadoresLocalStorage(jugadores);
+
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    alert("La posición del jugador ha sido reasignada");
+
+    listarJugadores();
+} catch (error) {
+    console.error('Error:', error.message);
+}
+
 };
 
 // Función asíncrona para realizar un cambio durante un partido
