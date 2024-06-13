@@ -1,18 +1,20 @@
-# Challenge-Promises
-Ejercicio: Gestión de equipo de fútbol
-Desarrolla una aplicación para gestionar un equipo de fútbol, que permita realizar operaciones como agregar jugadores, listar jugadores, asignar posiciones y realizar cambios durante un partido. Utiliza promesas, async/await, try/catch y composición de funciones asíncronas para manejar las operaciones de forma segura y eficiente.
+¡Bienvenido al Administrador de Jugadores de Fútbol! ⚽
+¡Hola! Este proyecto es un administrador de jugadores de fútbol, perfecto para llevar la cuenta de tus jugadores, ya sean titulares o suplentes. 
 
-# Requisitos:
-1) La aplicación debe permitir agregar nuevos jugadores al equipo proporcionando su nombre, edad y posición.
-2) Debe ser posible listar todos los jugadores del equipo, indicando su nombre, edad y posición.
-3) Implementa un mecanismo para asignar posiciones a los jugadores, como delantero, centrocampista, defensa o portero.
-4) Proporciona una función para realizar cambios durante un partido, que permita sustituir jugadores de acuerdo a las reglas del fútbol.
-5) Utiliza un almacenamiento persistente para los datos del equipo y los jugadores, como una base de datos simple (puede ser simulado con archivos en el sistema de archivos).
-6) Maneja los errores de manera adecuada utilizando try/catch para capturar errores asíncronos y promesas rechazadas.
+¿Qué puedes hacer? 
+Agregar Jugadores: Con unos simples prompts, puedes agregar nuevos jugadores a tu equipo. Solo necesitas su nombre, edad, posición y si es titular o suplente.
+Listar Jugadores: ¿Quieres ver quiénes están en tu equipo? Esta página te muestra todos tus jugadores, divididos claramente entre titulares y suplentes. 
+Asignar Nueva Posición: Puede reasignar fácilmente la posición de cualquier jugador.
+Realizar Cambios en Partido: Simula cambios de jugadores durante un partido. Cambia a un titular por un suplente y viceversa. ¡Es tan simple como escribir sus nombres!
+¿Cómo funciona todo esto? 
+Utilizamos localStorage para mantener todos los datos de tus jugadores. Así, aunque cierres la página, tus jugadores estarán esperándote cuando vuelvas.
 
-# Pasos Sugeridos
-1) Define una estructura de datos para representar a un jugador, que incluya su nombre, edad, posición y estado (titular, suplente o lesionado).
-2) Implementa funciones asíncronas para agregar un nuevo jugador, listar jugadores, asignar posiciones y realizar cambios durante un partido.
-3) Utiliza promesas para manejar la lectura y escritura de datos desde y hacia el almacenamiento persistente.
-4) Crea una función principal asíncrona que interactúe con el usuario, permitiéndole realizar las operaciones mencionadas.
-5) Utiliza la composición de funciones asíncronas para realizar operaciones complejas, como realizar cambios durante un partido.
+Aquí tienes un vistazo de las funciones clave:
+obtenerJugadoresLocalStorage: Recupera los jugadores desde localStorage.
+guardarJugadoresLocalStorage: Guarda los jugadores en localStorage.
+agregarJugador: Añade un nuevo jugador al equipo.
+listarJugadores: Muestra la lista de jugadores, separados entre titulares y suplentes.
+asignarPosicion: Cambia la posición de un jugador.
+realizarCambio: Simula un cambio durante el partido.
+¿Quieres probarlo? 🚀
+Simplemente abre la página, sigue las instrucciones en pantalla y empieza a gestionar tu equipo como todo un entrenador profesional. No necesitas ser un experto en tecnología, ¡solo un fan del fútbol con ganas de jugar!
