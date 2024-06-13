@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<link rel="stylesheet" href="output.css">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de equipo de fútbol</title>
+</head>
+
+<body>
+    <h1>Gestor de equipo de fútbol</h1>
+    <div id="listarJugadores" class="jugadores-container">
+        <div class="jugadores-columna"> 
+            <h2>Titulares</h2>
+            <ul id="titulares"></ul>
+        </div>
+        <div class="jugadores-columna">
+            <h2>Suplentes</h2>
+            <ul id="suplentes"></ul>       
+        </div>
+    </div>
+    <div class="acciones-container">
+        <button onclick="agregarJugador()">Agregar jugador</button>
+        <button onclick="listarJugadores()">Listar jugadores</button>
+        <button onclick="asignarPosicion()">Asignar posición</button>
+        <button onclick="realizarCambio()">Realizar cambio</button>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
